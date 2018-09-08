@@ -72,7 +72,7 @@
                         </li>
                         <li>
                             <h3 class='tres'>
-                                <a href=''>線上花店</a>
+                                <a href='index.php'>線上花店</a>
                             </h3>
                         </li>
 
@@ -203,19 +203,6 @@
     <script src="js1/tiles.js"></script>
     <script src="js1/designimg.js"></script>
     <script src="js1/goto.js"></script>
-
-    <script>
-        $(function () {
-            $('.logoP').click(function () {
-                $('.tresA').slideToggle();
-            })
-
-        })
-    </script>
-
-
-
-
 
 
 

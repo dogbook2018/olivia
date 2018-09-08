@@ -55,7 +55,7 @@
                         </li>
                         <li>
                             <h3 class='tres'>
-                                <a href=''>線上花店</a>
+                                <a href='index.php'>線上花店</a>
                             </h3>
                         </li>
 

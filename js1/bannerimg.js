@@ -1,6 +1,6 @@
 $(function () {
     var $block = $('#block')
-    var $ul = $block.find('ul.imgs')
+    var $ul = $block.find('.images')
     var $li = $ul.find('li')
     var length = $li.length
     var index = 0
