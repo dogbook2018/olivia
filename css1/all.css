@@ -30,12 +30,12 @@ body {
     padding-left: 15px;
 }
 
-.imgs {
+.images {
     width: 450px;
     height: 300px;
 }
 
-.imgs li img {
+.images li img {
     width: 450px;
     height: 300px;
     float: left;
@@ -194,7 +194,7 @@ body {
         height: 600px;
     }
 
-    .imgs li img {
+    .images li img {
         width: 800px;
         height: 600px;
     }
@@ -209,12 +209,12 @@ body {
         height: 35px;
     }
 
-    .imgs {
+    .images {
         width: 800px;
         height: 400px;
     }
 
-    .imgs img {
+    .images img {
         height: 600px;
     }
 
@@ -327,7 +327,7 @@ body {
         height: 700px;
     }
 
-    .imgs li img {
+    .images li img {
         width: 1300px;
         height: 700px;
     }

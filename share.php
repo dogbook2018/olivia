@@ -125,14 +125,7 @@
     <script type="text/javascript" src="path_to/jquery.simplePagination.js"></script>
 
 
-    <script>
-        $(function () {
-            $('.logoP').click(function () {
-                $('.tresA').slideToggle();
-            })
 
-        })
-    </script>
 
 
 

@@ -36,6 +36,16 @@ $(function () {
 
 
 
+$(function () {
+    $('.logoP').click(function () {
+        $('.tresA').slideToggle();
+    })
+
+})
+
+
+
+
 // $(function () {
 //     var $menu = $('#navbar')
 //     var menuTop = $menu.offset().top

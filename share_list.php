@@ -125,14 +125,7 @@
     <script src="js1/pagebtn.js"></script>
 
 
-    <script>
-        $(function () {
-            $('.logoP').click(function () {
-                $('.tresA').slideToggle();
-            })
-
-        })
-    </script>
+ 
 
 
 
