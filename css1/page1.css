@@ -89,17 +89,27 @@
   float: left;
   margin-left: 15px;
   /* margin-top: 10px auto 10 auto; */
+  text-align: center;
 }
+.content a:link{
+ color:#E4E4E4;
+ text-shadow:1px 1px 1px rgb(102, 102, 102);
+}
+.content a:hover{
+  color:rgb(0, 0, 0);
+  text-shadow:unset;
+ }
 
 .pagination {
   padding-top: 20px;
 }
 
 .contentdiv {
-  border: 1px;
-  border-color: black;
+  border: 0.7px;
+  border-color: rgb(150, 150, 150);
   border-style: solid;
   margin-top: 70px;
+  box-shadow:3px 3px 12px rgb(51, 51, 51);
 }
 
 .contentimg {

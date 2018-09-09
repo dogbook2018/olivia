@@ -123,12 +123,29 @@
 
 .backicon {
   clear: both;
-  margin: 20px 0 20px 0;
+  font-size: 30px;
+  margin-left: 135px;
+  text-align: center;
+}
+.backicon a:link{
+  color: #E4E4E4;
+}
+.backicon a:hover{
+  color: #FF6F8E;
 }
 
-.backicon i {
-  width: 30px;
+.backicon a i,
+.backicon a p {
+  float: left;
   height: 30px;
+  margin: 4px 0 20px 0px;
+}
+.backicon a i{
+  padding-right: 10px;
+  padding-top: 4px;
+}
+.backicon a p{
+  padding-bottom: 2px;
 }
 
 /* tablet css */
@@ -187,6 +204,12 @@
   }
 
   /* ************navbar end********** */
+
+  .backicon a i,
+  .backicon a p {
+    margin: 25px 0 20px 0px;
+  }
+
   .content {
     margin-left: 0px;
   }
@@ -206,6 +229,9 @@
 
   .contentp P {
     width: 270px;
+  }
+  .backicon {
+    margin-left: 321px;
   }
 }
 
@@ -272,5 +298,8 @@
 
   .contentdiv {
     margin-left: 200px;
+  }
+  .backicon {
+    margin-left: 571px;
   }
 }

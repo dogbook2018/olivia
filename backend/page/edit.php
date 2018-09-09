@@ -5,11 +5,20 @@ require('../../connection/connection.php'); ?>
 
 
 if(isset($_POST['EditForm']) && $_POST['EditForm'] == "UPDATE"){
+  if(isset($_FILES['picture']['name']) && $_FILES['picture']['name']!=null){
+    unlink("../../uploads/designflower/".$_POST['old_picture']);
+    $filename = $_FILES['picture']['name'];
+    $file_path = '../../uploads/designflower/'.$_FILES['picture']['name'];
+    move_uploaded_file($_FILES['picture']['tmp_name'], $file_path) ;
+  }else{
+    $filename = $_POST['old_picture'] ;
+  }
 
-  $sql= "UPDATE pages SET title=:title content=:content, updated_at=:updated_at WHERE pages_id=:pages_id";
+  $sql= "UPDATE pages SET title=:title, picture=:picture, content=:content, updated_at=:updated_at WHERE pages_id=:pages_id";
   $sth = $db ->prepare($sql);
  
   $sth ->bindParam(":title", $_POST['title'], PDO::PARAM_STR);
+  $sth ->bindParam(":picture", $filename, PDO::PARAM_STR);
   $sth ->bindParam(":content", $_POST['content'], PDO::PARAM_STR);
   $sth ->bindParam(":updated_at", $_POST['updated_at'], PDO::PARAM_STR);
   $sth ->bindParam(":pages_id", $_POST['pages_id'], PDO::PARAM_INT);
@@ -38,7 +47,7 @@ if(isset($_POST['EditForm']) && $_POST['EditForm'] == "UPDATE"){
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="">頁面管理</h1>
+          <h1 class="">特殊花藝管理</h1>
         </div>
       </div>
     </div>
@@ -51,7 +60,7 @@ if(isset($_POST['EditForm']) && $_POST['EditForm'] == "UPDATE"){
             <li class="breadcrumb-item">
               <a href="#">主控台</a>
             </li>
-            <li class="breadcrumb-item">頁面管理</li>
+            <li class="breadcrumb-item">特殊花藝管理</li>
             <li class="breadcrumb-item active">編輯</li>
           </ul>
           <a href="list.php" class="btn btn-outline-primary m-2">回上一頁</a>
@@ -59,12 +68,21 @@ if(isset($_POST['EditForm']) && $_POST['EditForm'] == "UPDATE"){
       </div>
       <div class="row">
         <div class="col-md-12">
-          <form class="" action="edit.php" method="post" data-toggle="validator">
+          <form class="" action="edit.php" method="post" enctype="multipart/form-data" data-toggle="validator">
          
           <div class="form-group form-row">
               <label class="col-sm-2 col-form-label">標題</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" name="title" value="<?php echo $pages['title']; ?>" data-error="請輸入標題" required> 
+                <div class="help-block with-errors text-left alert-warning"></div>
+                </div>
+</div>
+                <div class="form-group form-row">
+              <label class="col-sm-2 col-form-label">照片</label>
+              <div class="col-sm-9">
+              <img src="../../uploads/designflower/<?php echo $pages['picture'];?>" width="200" alt="">
+                <input type="file" class="form-control" name="picture" id="picture">
+                <input type="hidden" name="old_picture" value="<?php echo $pages['picture'];?>">
                 <div class="help-block with-errors text-left alert-warning"></div>
                 </div>
             </div>

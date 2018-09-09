@@ -1,3 +1,17 @@
+<?php 
+require_once('connection/connection.php');
+$limit = 4;
+if (isset($_GET["page"])) { 
+  $page  = $_GET["page"]; 
+} else { 
+  $page=1; 
+};
+$start_from = ($page-1) * $limit;
+$query = $db->query("SELECT * FROM news ORDER BY published_date DESC LIMIT ".$start_from.",".$limit);
+$data = $query->fetchAll(PDO::FETCH_ASSOC);
+$total_rows = count($data);
+?>
+
 <!DOCTYPE php>
 <php lang="en">
 
@@ -28,7 +42,7 @@
         <div id="navbar">
             <ul class="nav">
                 <li class="logoli">
-                    <a href=''><img src="images/logo.png"></a>
+                    <a href='OFD.php'><img src="images/logo.png"></a>
                 </li>
                 <li>
                     <p class="logoP"><i class="fas fa-bars"></i></p>
@@ -64,39 +78,65 @@
             </ul>
             <div style="clear:both"></div>
         </div>
-
-        <div class="content">
+        <?php foreach ($data as $news) {?>
+        <div class="content"><a href="share.php?id=<?php echo $news['news_id']; ?>">
             <div class="contentdiv">
+           
                 <div class="contentimg">
-                    <img src="images/page1.jpg" alt="">
+                    <img src="uploads/news/<?php echo $news['picture'];  ?>" alt="">
                 </div>
-                <p>心花怒放 隨意手作 2018/06/13</p>
-            </div>
+                <span><?php echo $news['published_date'];?></span>
+                <p><?php echo mb_strimwidth(strip_tags( $news['content']),0,20,"...");?></p>
+        </a> </div>
 
-            <div class="contentdiv">
-                <div class="contentimg">
-                    <img src="images/page1.jpg" alt="">
-                </div>
-                <p>心花怒放 隨意手作 2018/06/13</p>
-            </div>
-
-            <div class="contentdiv">
-                <div class="contentimg">
-                    <img src="images/page1.jpg" alt="">
-                </div>
-                <p>心花怒放 隨意手作 2018/06/13</p>
-            </div>
+           
         </div>
 
+        <?php } ?>
 
 
-        <div class="pagination-holder clearfix">
-            <div id="light-pagination" class="pagination"></div>
+
+        <div class="pagination-holder<?php  if($total_rows > 0){
+                        $sth = $db->query("SELECT * FROM news ORDER BY published_date DESC ");
+                        $data_count = count($sth ->fetchAll(PDO::FETCH_ASSOC));
+                        $total_pages = ceil($data_count / $limit); //無條件進位
+                    ?>" >
+                    <ul class="pagination">
+                        <li class="page-item">
+                        <?php   if($page > 1){ ?>
+                        <!-- 頁數超過1，上一頁可連結 -->
+                        <a class="page-link" href="share_list.php?page=<?php echo $page-1; ?>">
+                            <span>«</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <?php }else{ ?>
+                        <!-- 頁數不超過1頁，上一頁按鈕不可連結 -->
+                        <span class="page-link">«</span>
+                        <?php } ?>
+                        </li>
+                        <?php for($i=1; $i <= $total_pages; $i++){ ?>
+                        <li class="page-item">
+                        <a class="page-link" href="share_list.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                        </li>
+                        <?php } ?>
+                        <li class="page-item">
+                        <?php   if($page < $total_pages){ ?>
+                        <a class="page-link" href="share_list.php?page=<?php echo $page+1; ?>">
+                            <span>»</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <?php }else{ ?>
+                            <span class="page-link">»</span>
+                        <?php } ?>
+                        </li>
+                    </ul>
+                            
         </div>
+        <?php } ?>  
 
         <div id="footer">
 
-            <div class="footerlogo"><img src="images/footerlogo.png" alt=""></div>
+            <div class="footerlogo"><a href='index.php'><img src="images/footerlogo.png" alt=""></a></div>
 
             <div class="footercontent">
                 <div class="footericon">
@@ -120,9 +160,10 @@
 
     <script src="js1/jquery-1.12.4.js"></script>
     <script src="js1/navbar.js"></script>
-    <script type="text/javascript" src="path_to/jquery.js"></script>
-    <script type="text/javascript" src="path_to/jquery.simplePagination.js"></script>
+    <!-- <script type="text/javascript" src="path_to/jquery.js"></script>
+    <script type="text/javascript" src="path_to/jquery.simplePagination.js"></script> -->
     <script src="js1/pagebtn.js"></script>
+    <script src="js1/share_list.js"></script>
 
 
  

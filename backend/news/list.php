@@ -37,7 +37,7 @@ $totalRows = count($data);
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="">最新消息管理</h1>
+          <h1 class="">花藝分享管理</h1>
         </div>
       </div>
     </div>
@@ -50,7 +50,7 @@ $totalRows = count($data);
             <li class="breadcrumb-item">
               <a href="#">主控台</a>
             </li>
-            <li class="breadcrumb-item active">最新消息管理</li>
+            <li class="breadcrumb-item active">花藝分享管理</li>
           </ul>
           <a href="create.php" class="btn btn-outline-primary m-2">新增</a>
         </div>
@@ -62,8 +62,9 @@ $totalRows = count($data);
           <table class="table">
             <thead>
               <tr>
-                <th width="15%">發佈日期</th>
+                <th>發佈日期</th>
                 <th>標題</th>
+                <th>照片</th>
                 <th>內容</th>
                 <th width="15%">操作</th>
               </tr>
@@ -73,6 +74,7 @@ $totalRows = count($data);
               <tr>
                 <td><?php echo $news['published_date']; ?></td>
                 <td class="text-left"><?php echo $news['title']; ?></td>
+                <td><img src="../../uploads/news/<?php echo $news['picture'];  ?>"  width="200" alt=""></td>
                 <td class="text-left"><?php echo mb_strimwidth($news['content'],0,100,"..."); ?></td>
                 <td>
                   <a href="edit.php?news_id=<?php echo $news['news_id']; ?>" class="btn btn-outline-primary">編輯</a>

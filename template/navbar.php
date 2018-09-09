@@ -23,10 +23,10 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
 						<li class="has-dropdown">
 							<a href="services.php">服務項目</a>
 							<ul class="dropdown">
-								<li><a href="#">婚禮佈置</a></li>
-								<li><a href="#">花藝教學</a></li>
-								<li><a href="#">comming soon</a></li>
-								<li><a href="#">comming soon</a></li>
+								<li><a href="designflower.php">婚禮佈置</a></li>
+								<li><a href="share_list.php">花藝教學</a></li>
+								<li><a href="index.php">comming soon</a></li>
+								<li><a href="index.php">comming soon</a></li>
 							</ul>
 						</li>
 						<li><a href="contact.php">與我聯絡</a></li>

@@ -1,5 +1,9 @@
+<?php 
+require_once('connection/connection.php');
+?>
+
 <!DOCTYPE php>
-<php lang="en">
+
 
 <head>
     <meta charset="UTF-8">
@@ -45,14 +49,14 @@
         <div id="navbar">
             <ul class="nav">
                 <li class="logoli">
-                    <a href=''><img src="images/logo.png"></a>
+                    <a href='OFD.php'><img src="images/logo.png"></a>
                 </li>
                 <li>
                     <p class="logoP"><i class="fas fa-bars"></i></p>
                     <ul class="tresA">
                         <li>
                             <h3 class='tres'>
-                                <a href='#content'>關於Olivia</a>
+                                <a class="goto" href='#content'>關於Olivia</a>
                             </h3>
                         </li>
                         <li>
@@ -67,7 +71,7 @@
                         </li>
                         <li>
                             <h3 class='tres'>
-                                <a href='#map'>花坊位置</a>
+                                <a class="goto" href='#map'>花坊位置</a>
                             </h3>
                         </li>
                         <li>
@@ -91,8 +95,7 @@
                 <li class="contentli">
 
                     <h1>花坊的故事</h1>
-                    <a href="https://www.instagram.com/olivia_ch/" alt="https://www.instagram.com/olivia_ch/" target="_blank">OLIVIA
-                        IG</a>
+                    
                     <br>
                     <br>
 
@@ -102,6 +105,8 @@
                     <p> 也將旅途中所吸收到的美，呈現在我的作品裡</p>
                     <p> ，分享給他人。
                     </p>
+                    <a href="https://www.instagram.com/olivia_ch/" alt="https://www.instagram.com/olivia_ch/" target="_blank">OLIVIA
+                    <i class="fab fa-instagram"></i></a>
                 </li>
                 <li>
                     <img src="images/aboutpic.png">
@@ -176,7 +181,7 @@
         </div>
         <div id="footer">
 
-            <div class="footerlogo"><img src="images/footerlogo.png" alt=""></div>
+            <div class="footerlogo"><a href='index.php'><img src="images/footerlogo.png" alt=""></a></div>
 
             <div class="footercontent">
                 <div class="footericon">
@@ -208,4 +213,3 @@
 
 </body>
 
-</php>

@@ -3,9 +3,21 @@ require_once('../function/login_check.php');
 require('../../connection/connection.php'); ?>
 <?php
 if(isset($_POST['AddForm']) && $_POST['AddForm'] == "INSERT"){
-  $sql= "INSERT INTO pages  (title, content, created_at) VALUES ( :title, :content, :created_at)";
+  if(!file_exists('../../uploads/designflower')){
+    mkdir('../../uploads/designflower',0755,true);
+  }
+
+if(isset($_FILES['picture']['name'])){
+    $filename = $_FILES['picture']['name'];
+    $file_path = '../../uploads/designflower/'.$_FILES['picture']['name'];
+    move_uploaded_file($_FILES['picture']['tmp_name'], $file_path) ;
+  }else{
+    $filename = null ;
+  }
+  $sql= "INSERT INTO pages  (title, picture, content, created_at) VALUES ( :title, :picture, :content, :created_at)";
   $sth = $db ->prepare($sql);
   $sth ->bindParam(":title", $_POST['title'], PDO::PARAM_STR);
+  $sth ->bindParam(":picture", $filename, PDO::PARAM_STR);
   $sth ->bindParam(":content", $_POST['content'], PDO::PARAM_STR);
   $sth ->bindParam(":created_at", $_POST['created_at'], PDO::PARAM_STR);
   $sth ->execute();
@@ -32,7 +44,7 @@ if(isset($_POST['AddForm']) && $_POST['AddForm'] == "INSERT"){
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="">最新消息管理</h1>
+          <h1 class="">特殊花藝管理</h1>
         </div>
       </div>
     </div>
@@ -45,7 +57,7 @@ if(isset($_POST['AddForm']) && $_POST['AddForm'] == "INSERT"){
             <li class="breadcrumb-item">
               <a href="#">主控台</a>
             </li>
-            <li class="breadcrumb-item">最新消息管理</li>
+            <li class="breadcrumb-item">特殊花藝管理</li>
             <li class="breadcrumb-item active">新增</li>
           </ul>
           <a href="list.php" class="btn btn-outline-primary m-2">回上一頁</a>
@@ -53,12 +65,19 @@ if(isset($_POST['AddForm']) && $_POST['AddForm'] == "INSERT"){
       </div>
       <div class="row">
         <div class="col-md-12">
-          <form class="" action="create.php" method="post" data-toggle="validator">
+          <form class="" action="create.php" method="post" enctype="multipart/form-data" data-toggle="validator">
 
             <div class="form-group form-row">
               <label class="col-sm-2 col-form-label">標題</label>
               <div class="col-sm-10">
                 <input type="text" class="form-control" name="title"  data-error="請輸入標題" required> 
+                <div class="help-block with-errors text-left alert-warning"></div>
+                </div>
+            </div>
+            <div class="form-group form-row">
+              <label class="col-sm-2 col-form-label">特殊花藝照片</label>
+              <div class="col-sm-10">
+                <input type="file" class="form-control" name="picture"  data-error="請選擇照片" required> 
                 <div class="help-block with-errors text-left alert-warning"></div>
                 </div>
             </div>

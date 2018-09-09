@@ -29,7 +29,7 @@ $totalRows = count($data);
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="">頁面管理</h1>
+          <h1 class="">特殊花藝管理</h1>
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@ $totalRows = count($data);
             <li class="breadcrumb-item">
               <a href="#">主控台</a>
             </li>
-            <li class="breadcrumb-item active">頁面管理</li>
+            <li class="breadcrumb-item active">特殊花藝管理</li>
           </ul>
           <a href="create.php" class="btn btn-outline-primary m-2">新增</a>
         </div>
@@ -56,6 +56,7 @@ $totalRows = count($data);
               <tr>
                
                 <th>標題</th>
+                <th>照片</th>
                 <th>內容</th>
                 <th width="15%">操作</th>
               </tr>
@@ -65,6 +66,7 @@ $totalRows = count($data);
               <tr>
                
                 <td class="text-left"><?php echo $pages['title']; ?></td>
+                <td><img src="../../uploads/designflower/<?php echo $pages['picture'];  ?>"  width="200" alt=""></td>
                 <td class="text-left"><?php echo mb_strimwidth($pages['content'],0,100,"..."); ?></td>
                 <td>
                   <a href="edit.php?pages_id=<?php echo $pages['pages_id']; ?>" class="btn btn-outline-primary">編輯</a>

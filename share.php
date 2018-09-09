@@ -1,3 +1,9 @@
+<?php 
+require_once('connection/connection.php');
+
+$query = $db->query("SELECT * FROM news WHERE news_id =".$_GET['id']);
+$news = $query->fetch(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE php>
 <php lang="en">
 
@@ -27,7 +33,7 @@
         <div id="navbar">
             <ul class="nav">
                 <li class="logoli">
-                    <a href=''><img src="images/logo.png"></a>
+                    <a href='OFD.php'><img src="images/logo.png"></a>
                 </li>
                 <li>
                     <p class="logoP"><i class="fas fa-bars"></i></p>
@@ -67,20 +73,13 @@
         <div class="content">
             <div class="contentdiv">
                 <div class="contentimg">
-                    <img src="images/page1.jpg" alt="">
+                    <img src="uploads/news/<?php echo $news['picture'];  ?>" alt="">
                 </div>
                 <div class="contentp">
-                    <h3>心花怒放 隨意手作 2018/06/13</h3>
+                    <h3><?php echo $news['title']; ?></h3>
                     <br>
-                    <p>來服入例開？麼吸中方國成友人高不中計：雙問代給似記我有：不為作長縣：線山世說聽常。曾有說學樹一學稱一一話；來海成空客引選客小，少官出有府康了的給因我和一共作分得德感分員媽位口。我決狀唱，小過第界總如，正投自的最卻你知體之來裡定麼治改然劇老形是上影業即竟。足要天的興去未傷找他……但到當是出手自的國，起後有文，因完樂達？
-
-                        於濟紅景線轉方手時解際意語自？他明的放過在公的命政戰生地接竟身示來方來？重麼歷展爸是義！為來術門兩活長花問者檢。
-
-                        通界不目風不所以四，樣條想，那關成父。
-
-                        斯好光！
-
-                        國這放童力和的成當我一。</p>
+                    <p><?php echo $news['content']; ?></p>
+                    <span> <?php echo $news['published_date']; ?></span>
                 </div>
             </div>
 
@@ -89,7 +88,7 @@
 
         </div>
 
-        <div class="backicon">放置icon 返回上一頁</div>
+        <div class="backicon"><a href='share_list.php'><i class="far fa-arrow-alt-circle-left"></i><p>回到上一頁</p></a></div>
 
 
 
@@ -97,7 +96,7 @@
 
         <div id="footer">
 
-            <div class="footerlogo"><img src="images/footerlogo.png" alt=""></div>
+            <div class="footerlogo"><a href='index.php'><img src="images/footerlogo.png" alt=""></a></div>
 
             <div class="footercontent">
                 <div class="footericon">

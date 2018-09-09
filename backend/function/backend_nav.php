@@ -8,10 +8,10 @@
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbar2SupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item :hover active">
-            <a class="nav-link" href="../news/list.php"><i class="fa fa-lg fa-bullhorn" ></i>最新消息管理</a>
+            <a class="nav-link" href="../news/list.php"><i class="fa fa-lg fa-bullhorn" ></i>花藝分享管理</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="../page/list.php"><i class="fa fa-lg fa-book" ></i>頁面管理</a>
+            <a class="nav-link" href="../page/list.php"><i class="fa fa-lg fa-book" ></i>特殊花藝管理</a>
           </li>
           <li class="nav-item active">
             <a class="nav-link" href="../product_categories/list.php"><i class="fa fa-lg fa-shopping-cart" ></i>產品管理</a>

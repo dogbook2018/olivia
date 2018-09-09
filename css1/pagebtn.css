@@ -1,6 +1,32 @@
 .pagination-holder {
     clear: both;
     margin: 0 0 20px 125px;
+    color:#E4E4E4;
+}
+.pagination-holder:hover {
+    color:rgb(0, 0, 0);
+}
+.page-item a:link{
+    color: #03A1E9;
+    opacity: 0.4;
+}
+.page-item a:hover{
+    opacity: 1;
+}
+    
+.pagination {
+        text-align: center;
+
+}
+.page-item{
+list-style: none;
+list-style-image: none;
+list-style-type: none;
+width: 30px;
+float: left;
+font-size: 20px;
+margin-bottom: 10px;
+
 }
 
 @media only screen and (min-width: 481px) {

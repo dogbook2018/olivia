@@ -1,3 +1,17 @@
+<?php 
+require_once('connection/connection.php');
+$limit = 2;
+if (isset($_GET["page"])) { 
+  $page  = $_GET["page"]; 
+} else { 
+  $page=1; 
+};
+$start_from = ($page-1) * $limit;
+$query = $db->query("SELECT * FROM pages ORDER BY created_at DESC LIMIT ".$start_from.",".$limit);
+$data = $query->fetchAll(PDO::FETCH_ASSOC);
+$total_rows = count($data);
+?>
+?>
 <!DOCTYPE php>
 <php lang="en">
 
@@ -28,7 +42,7 @@
         <div id="navbar">
             <ul class="nav">
                 <li class="logoli">
-                    <a href=''><img src="images/logo.png"></a>
+                    <a href='OFD.php'><img src="images/logo.png"></a>
                 </li>
                 <li>
                     <p class="logoP"><i class="fas fa-bars"></i></p>
@@ -64,39 +78,63 @@
             </ul>
             <div style="clear:both"></div>
         </div>
-
+        <?php foreach ($data as $pages) {?>
         <div class="content">
             <div class="contentdiv">
                 <div class="contentimg">
-                    <img src="images/3.jpg" alt="">
+                    <img src="uploads/designflower/<?php echo $pages['picture'];  ?>" alt="">
                 </div>
-                <p>房市切是心為證和的上拿，在算收他現，手物會，不紙具的務際時則強的體例力麼麼務，的國不曾長；建美創，的是走院人，看調運歡立味當，著數文血分會，情喜量指內我年生。曾傷應臺知歷印？病金自多陽近，我是業中腳三方成想一，她然後一。表必三提不農教男市險線一間業觀山中，查物當慢也是化的校一產此專的學開。</p>
+                <h1><?php echo $pages['title']; ?><span> <?php echo $pages['created_at']; ?></span></h1>
+                <p><?php echo $pages['content']; ?></p>
             </div>
 
-            <div class="contentdiv">
-                <div class="contentimg">
-                    <img src="images/3.jpg" alt="">
-                </div>
-                <p>房市切是心為證和的上拿，在算收他現，手物會，不紙具的務際時則強的體例力麼麼務，的國不曾長；建美創，的是走院人，看調運歡立味當，著數文血分會，情喜量指內我年生。曾傷應臺知歷印？病金自多陽近，我是業中腳三方成想一，她然後一。表必三提不農教男市險線一間業觀山中，查物當慢也是化的校一產此專的學開。</p>
-            </div>
-
-            <div class="contentdiv">
-                <div class="contentimg">
-                    <img src="images/3.jpg" alt="">
-                </div>
-                <p>房市切是心為證和的上拿，在算收他現，手物會，不紙具的務際時則強的體例力麼麼務，的國不曾長；建美創，的是走院人，看調運歡立味當，著數文血分會，情喜量指內我年生。曾傷應臺知歷印？病金自多陽近，我是業中腳三方成想一，她然後一。表必三提不農教男市險線一間業觀山中，查物當慢也是化的校一產此專的學開。</p>
-            </div>
         </div>
+        <?php } ?>
+        <div class="pagination-holder<?php  if($total_rows > 0){
+                        $sth = $db->query("SELECT * FROM pages ORDER BY created_at DESC ");
+                        $data_count = count($sth ->fetchAll(PDO::FETCH_ASSOC));
+                        $total_pages = ceil($data_count / $limit); //無條件進位
+                    ?>" >
+                    <ul class="pagination">
+                        <li class="page-item">
+                        <?php   if($page > 1){ ?>
+                        <!-- 頁數超過1，上一頁可連結 -->
+                        <a class="page-link" href="designflower.php?page=<?php echo $page-1; ?>">
+                            <span>«</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <?php }else{ ?>
+                        <!-- 頁數不超過1頁，上一頁按鈕不可連結 -->
+                        <span class="page-link">«</span>
+                        <?php } ?>
+                        </li>
+                        <?php for($i=1; $i <= $total_pages; $i++){ ?>
+                        <li class="page-item">
+                        <a class="page-link" href="designflower.php?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                        </li>
+                        <?php } ?>
+                        <li class="page-item">
+                        <?php   if($page < $total_pages){ ?>
+                        <a class="page-link" href="designflower.php?page=<?php echo $page+1; ?>">
+                            <span>»</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                        <?php }else{ ?>
+                            <span class="page-link">»</span>
+                        <?php } ?>
+                        </li>
+                    </ul>
 
 
+                    </div>
+                    <?php } ?> 
 
-        <div class="pagination-holder clearfix">
-            <div id="light-pagination" class="pagination"></div>
-        </div>
+
+       
 
         <div id="footer">
 
-            <div class="footerlogo"><img src="images/footerlogo.png" alt=""></div>
+            <div class="footerlogo"><a href='index.php'><img src="images/footerlogo.png" alt=""></a></div>
 
             <div class="footercontent">
                 <div class="footericon">
@@ -108,7 +146,9 @@
                 <div class="footerp">
                     <p>Copyright <i class="far fa-copyright"></i>2018 Olivia flower design. All rights reserved</p>
                 </div>
+              
             </div>
+             
 
         </div>
 
@@ -120,8 +160,8 @@
 
     <script src="js1/jquery-1.12.4.js"></script>
     <script src="js1/navbar.js"></script>
-    <script type="text/javascript" src="path_to/jquery.js"></script>
-    <script type="text/javascript" src="path_to/jquery.simplePagination.js"></script>
+    <!-- <script type="text/javascript" src="path_to/jquery.js"></script>
+    <script type="text/javascript" src="path_to/jquery.simplePagination.js"></script> -->
     <script src="js1/pagebtn.js"></script>
 
 

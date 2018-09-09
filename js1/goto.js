@@ -1,7 +1,7 @@
 $(function () {
     var $htmlAndBody = $('html, body')
 
-    $('.tres a').click(function (event) {
+    $('.goto').click(function (event) {
         event.preventDefault()
 
         var $this = $(this)
