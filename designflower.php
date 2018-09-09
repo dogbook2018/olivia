@@ -11,7 +11,7 @@ $query = $db->query("SELECT * FROM pages ORDER BY created_at DESC LIMIT ".$start
 $data = $query->fetchAll(PDO::FETCH_ASSOC);
 $total_rows = count($data);
 ?>
-?>
+
 <!DOCTYPE php>
 <php lang="en">
 

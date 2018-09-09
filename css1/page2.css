@@ -89,6 +89,7 @@
   float: left;
   margin-left: 15px;
   /* margin-top: 10px auto 10 auto; */
+ 
 }
 
 .pagination {
@@ -106,12 +107,17 @@
 .contentimg {
   width: 450px;
   height: 343px;
+  box-shadow:3px 3px 12px rgb(51, 51, 51);
+}
+.contentdiv>h1{
+  box-shadow:3px 6px 12px rgb(51, 51, 51);
 }
 
 .contentdiv>p {
   display: block;
   padding-top: 5px;
   font-size: 20px;
+  box-shadow:3px 3px 12px rgb(51, 51, 51);
 }
 
 .contentimg>img {

@@ -246,6 +246,10 @@
   }
 
   /* ************navbar end********** */
+.content{
+  margin-left: 140;
+}
+
   .contentdiv {
     float: left;
     margin-left: 20px;
